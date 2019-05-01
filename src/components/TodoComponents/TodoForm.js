@@ -4,7 +4,7 @@ function TodoForm(props) {
     return (
         <form onSubmit = {props.addNewItem}>
             <input 
-                value = {porps.task} 
+                value = {props.task} 
                 type= "text" 
                 name= "task" 
                 placeholder= "Todo task" 

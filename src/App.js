@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TodoList from './components/TodoComponents/TodoList';
-// import TodoForm from './components/TodoComponents/TodoForm';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 const todoItems = [
   {task: "Lorem ipsum dolor sit amet 1", id: 1, comppleted: false},
@@ -47,9 +47,9 @@ class App extends React.Component {
       <div>
         <h1>Todo List:</h1>
         <TodoList todoDataList={this.state.todoList} />
-        {/* <TodoForm addNewItem={this.addNewItem} 
+        <TodoForm addNewItem={this.addNewItem} 
         changeHandler={this.changeHandler} 
-        task={this.state.task} /> */}
+        task={this.state.task} />
       </div>
     );
   };
