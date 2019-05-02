@@ -22,15 +22,34 @@ class App extends React.Component {
     super();
     this.state = {
       todoList: todoItems,
-      task: ""
+      task: "",
+      count: 0
     };
   };
 
-  changeHandler = e => {
+
+  toggleItem = itemId => {
     this.setState({
-      [e.target.name] : e.target.value
+      todoList: this.state.todoList.map(item => {
+        if (itemId === item.id) {
+          console.log(item.completed);
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        } else {
+          return item;
+        }
+      })
     });
   };
+
+
+  // changeHandler = e => {
+  //   this.setState({
+  //     [e.target.name] : e.target.value
+  //   });
+  // };
 
   addNewItem = e => {
     e.preventDefault();
@@ -42,17 +61,32 @@ class App extends React.Component {
     });
   };
 
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      todoList: this.state.todoList.filter(item => {
+        return !item.completed;
+      })
+    });
+  };
+
   render() {
     return (
-      <div>
+      <div className = "App">
         <h1>Todo List:</h1>
         <TodoList todoDataList={this.state.todoList} />
         <TodoForm addNewItem={this.addNewItem} 
-        changeHandler={this.changeHandler} 
-        task={this.state.task} />
+        // changeHandler={this.changeHandler} 
+        // task={this.state.task} 
+        />
+        toggleItem={this.toggleItem}
+        clearCompleted={this.clearCompleted}
       </div>
     );
   };
 };
 
 export default App;
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<App />, rootElement);
+
